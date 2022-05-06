@@ -1,8 +1,8 @@
 // array of questions
 var questions = [
     {
-        title: "quesiton 1",
-        choices: ["q1c1", "g1c2", "q1c3", "q1c4"],
+        title: "question 1",
+        choices: ["q1c1", "q1c2", "q1c3", "q1c4"],
         answer: "q1c1"
     },
     {
@@ -20,9 +20,7 @@ var questions = [
         choices: ["q4c1", "q2c4", "q4c3", "q4c4"],
         answer: "q4c4"
     }
-]
-
-var questionIndex = 0;
+];
 
 // DOM variables
 var time = document.querySelector("#time");
@@ -31,20 +29,21 @@ var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper"); 
 
 var timeRemaining = 80
-var penalized = 0;
+var hold = 0;
 var penalty = 10;
 var score = 0;
+var questionIndex = 0;
 
 var ulCreate = document.createElement("ul");
 
 // start time on button click
 timer.addEventListener("click", function () {
-    if (penalized === 0) {
-        penalized = setInterval(function () {
+    if (hold === 0) {
+        hold = setInterval(function () {
             timeRemaining--;
             time.textContent = "Time " + timeRemaining;
             if (timeRemaining <= 0) {
-                clearInterval(penalized);
+                clearInterval(hold);
                 done();
                 timeRemaining.textContent = "Time's up!";
             }
@@ -64,14 +63,15 @@ function render(questionIndex) {
         var currentChoices = questions[questionIndex].choices;
         // display question
         questionsDiv.textContent = currentQuestion;
+        questionsDiv.appendChild(ulCreate);
     }
+
     // display choices
     currentChoices.forEach(function (choice) {
-        var listItem = document.createElement('li');
+        var listItem = document.createElement("li");
         listItem.textContent = choice;
-        questionsDiv.appendChild(ulCreate);
         ulCreate.appendChild(listItem);
-        listItem.addEventListener("click", compare());
+        listItem.addEventListener("click", (compare));
     })
 }
 
@@ -125,7 +125,7 @@ function done() {
     // calculate remaining time and assign it to score
     if (timeRemaining >= 0) {
         var createP2 = document.createElement("p");
-        clearInterval(penalized);
+        clearInterval(hold);
         createP2.textContent = "Your final score is: " + timeRemaining;
         questionsDiv.appendChild(createP2);
     }
@@ -159,15 +159,15 @@ function done() {
                 score: timeRemaining
             }
             console.log(finalScore);
-            var allScores = localStorage.getItem("allScores");
-            if (!allScores) {
-                allScores = [];
+            var scores = localStorage.getItem("scores");
+            if (!scores) {
+                scores = [];
             } else {
-                allScores = JSON.parse(allScores);
+                scores = JSON.parse(scores);
             }
-            allScores.push(finalScore);
-            var newScore = JSON.stringify(allScores);
-            localStorage.setItem("allScores", newScore);
+            scores.push(finalScore);
+            var newScore = JSON.stringify(scores);
+            localStorage.setItem("scores", newScore);
 
             // redirect to high scores page
             window.location.replace("./highscores.html");
