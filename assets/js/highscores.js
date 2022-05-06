@@ -10,6 +10,7 @@ if (scores) {
     for (var i = 0; i < scores.length; i++) {
         var createLi = document.createElement("li");
         createLi.textContent = scores[i].initials + " " + scores[i].score;
+        createLi.setAttribute("class", "noSelect")
         highScore.appendChild(createLi);
     }
 }

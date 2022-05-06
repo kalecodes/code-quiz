@@ -1,0 +1,113 @@
+#wrapper {
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 80%;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#startButton {
+    position: relative;
+    width: 20%;
+    left: 40%;
+    right: 40%;
+    background-color: greenyellow;
+    padding: 10px;
+    font-size: 20px;
+}
+
+#startButton:hover, #submit:hover {
+    color: white;
+    background-color: darkgreen;
+    
+}
+
+#questionsDiv {
+    margin: 20px;
+    padding: 10px;
+    
+}
+
+#time {
+    float: right;
+    padding: 10px 15px 0 0;
+    color: blue;
+    font-weight: bold;
+}
+
+h1 {
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0 10px 0;
+}
+
+li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 95%;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+li:hover {
+    border: 1px solid lightgray;
+}
+
+/* ---------------------------------- */
+
+button {
+    border-radius: 8px;
+    margin: 10px;
+    padding: 5px;
+}
+
+input {
+    width: 90%;
+    margin-top: 2px;
+    border-radius: 3px;
+}
+
+#submit {
+    display: block;
+    background-color: greenyellow;
+    padding: 15px 35px;
+    margin-left: 40%;
+    font-size: 20px;
+}
+
+label {
+    display: block;
+    margin-right: 10px;
+}
+
+input {
+    margin-bottom: 20px;
+    width: 50%;
+    border: 1px solid lightgray;
+}
+
+#goBack, #clear {
+    background-color: lightgray;
+    position: relative;
+    padding: 10px;
+    font-size: 20px;
+    width: 20%;
+    left: 28%;
+    right: auto;
+    text-align: center;
+    text-decoration: none;
+    padding-left: 5px;
+}
+
+#goBack:hover, #clear:hover{
+    background-color: darkgrey;
+}
+
+.noSelect:hover {
+    border-color: black;
+}
+

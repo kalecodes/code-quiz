@@ -1,24 +1,44 @@
 // array of questions
 var questions = [
     {
-        title: "question 1",
-        choices: ["q1c1", "q1c2", "q1c3", "q1c4"],
-        answer: "q1c1"
+        title: "JavaScript is know as the programming language of the ________.",
+        choices: ["Server", "Desktop", "Mobile", "Web"],
+        answer: "Web"
     },
     {
-        title: "question 2",
-        choices: ["q2c1", "q2c2", "q2c3", "q2c4"],
-        answer: "q2c2"
+        title: "In which HTML element do we put JavaScript code?",
+        choices: ["<javascript>...</javascript>", "<script>...</script>", "<css>...</css>", "<js>...</js>"],
+        answer: "<script>...</script>"
     },
     {
-        title: "question 3",
-        choices: ["q3c1", "q3c2", "q3c3", "q3c4"],
-        answer: "q3c3"
+        title: "With which keyword can a datatype be declared to be a constant type?",
+        choices: ["const", "let", "var", "constant"],
+        answer: "const"
     },
     {
-        title: "question 4",
-        choices: ["q4c1", "q2c4", "q4c3", "q4c4"],
-        answer: "q4c4"
+        title: "What keyword is used to check whether a given property is valid or not?",
+        choices: ["is in", "exists", "in", "lies"],
+        answer: "in"
+    },
+    {
+        title: "Which function is used to serialize an object into a JSON string?",
+        choices: ["parse()", "stringify()", "convert()", "None of the above"],
+        answer: "stringify()"
+    },
+    {
+        title: "Which of the following is not a JavaScript framework?",
+        choices: ["Node", "Vue", "Cass", "React"],
+        answer: "Cass"
+    }, 
+    {
+        title: "Which keyword is used to declare an asynchronous function?",
+        choices: ["await", "async", "wait", "setTimeout"],
+        answer: "async"
+    }, 
+    {
+        title: "How do you write a comment in JavaScript?",
+        choices: ["#", "/* */", "$ $", "//"],
+        answer: "//"
     }
 ];
 
@@ -97,8 +117,8 @@ function compare(event) {
     questionIndex++;
 
     if (questionIndex >= questions.length) {
+        createDiv.textContent = "";
         done();
-        createDiv.textContent = "Quiz complete!" + "You got " + score + "/" + questions.length + " correct!";
     } else {
         render(questionIndex);
     }
@@ -111,33 +131,38 @@ function done() {
     questionsDiv.innerHTML = "";
     timeRemaining.innerHTML = "";
 
-    // create header
     var createH1 = document.createElement("h1");
     createH1.setAttribute("id", "createH1");
     createH1.textContent = "Congrats! You have finished the quiz.";
     questionsDiv.appendChild(createH1);
 
-    // creaet paragraph
+    var createDiv = document.createElement("div");
+    createDiv.textContent = "Quiz complete!" + " You got " + score + "/" + questions.length + " correct!";
+    questionsDiv.appendChild(createDiv);
+
     var createP = document.createElement("p");
-    createP.setAttribute("id", "createP");
+    createP.setAttribute("class", "center")
     questionsDiv.appendChild(createP);
 
     // calculate remaining time and assign it to score
     if (timeRemaining >= 0) {
-        var createP2 = document.createElement("p");
+        var scoreP = document.createElement("p");
+        scoreP.setAttribute("id", "scoreP")
         clearInterval(hold);
-        createP2.textContent = "Your final score is: " + timeRemaining;
-        questionsDiv.appendChild(createP2);
+        scoreP.textContent = "Your final score is: " + timeRemaining + " points";
+        questionsDiv.appendChild(scoreP);
     }
 
+
     var createLabel = document.createElement("label");
-    createLabel.setAttribute("id", "createLabel");
+    createLabel.setAttribute("class", "center")
     createLabel.textContent = "Please enter your initials: ";
     questionsDiv.appendChild(createLabel);
 
     var createInput = document.createElement("input");
     createInput.setAttribute("type", "text");
     createInput.setAttribute("id", "initials");
+    createInput.setAttribute("class", "center")
     createInput.textContent = "";
     questionsDiv.appendChild(createInput);
 
